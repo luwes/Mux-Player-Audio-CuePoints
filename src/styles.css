@@ -1,0 +1,173 @@
+:root {
+  --links: rgb(223, 40, 104);
+}
+
+body {
+  padding: 0 1rem;
+}
+
+header {
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left-header,
+.right-header {
+  display: flex;
+  align-items: center;
+}
+
+.mux-logo {
+  display: inline-block;
+  height: 26px;
+}
+
+.github-logo {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+}
+
+header h1 {
+  margin: 0;
+  margin-left: 0.9em;
+  margin-right: 0.9em;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  font-size: 18px;
+}
+
+h1 a {
+  color: var(--text-main);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1.5rem;
+}
+
+nav li {
+  position: relative;
+}
+
+nav li a {
+  color: var(--text-main);
+  font-family: monospace;
+  font-size: 16px;
+  padding: 2rem;
+  height: calc(100% - 4rem);
+  display: flex;
+  align-items: center;
+}
+
+li a.video {
+  background: rgba(28, 160, 253, 0.1);
+}
+
+li a.audio {
+  background: rgba(251, 80, 29, 0.08);
+}
+
+li a.player {
+  background: rgba(31, 195, 168, 0.1);
+}
+
+li a.uploader {
+  background: rgba(150, 32, 216, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--background-alt);
+  }
+  .github-logo {
+    filter: invert(1) saturate(0);
+  }
+}
+
+mux-player:not([audio]),
+mux-video:not([audio]),
+video {
+  width: 100%;
+  display: block;
+  line-height: 0;
+  margin-bottom: 1rem;
+  background: #000;
+  aspect-ratio: 16 / 9;
+}
+
+mux-player,
+mux-video,
+mux-audio,
+audio {
+  width: 100%;
+  display: block;
+  line-height: 0;
+  margin-bottom: 1rem;
+}
+
+.options {
+  overflow: auto;
+  max-height: calc(100vh - calc(var(--player-height, 450px) + 201px));
+  min-height: 400px;
+}
+
+.options > div {
+  padding: 5px 10px;
+  min-height: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.options > div :is(input, select) {
+  margin-left: 5px;
+}
+
+.options > div:nth-of-type(odd) {
+  background-color: #e9e9f9;
+}
+
+input[type="text"],
+input[type="url"],
+select {
+  flex-grow: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  .options > div:nth-of-type(odd) {
+    background-color: #3b3b3b;
+  }
+}
+
+div.code-renderer {
+  background-color: lightgrey;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.code-renderer pre {
+  width: 100%;
+  overflow: hidden;
+}
+
+div.url-renderer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.url-renderer a {
+  padding-block: 5px;
+  width: 100%;
+  overflow: scroll;
+  max-height: 100px;
+}
